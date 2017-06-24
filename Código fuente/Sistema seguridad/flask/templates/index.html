@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+
+  <head>
+      <title>Video live</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+      <center>
+      <h1>Video Streaming</h1>
+      <hr>
+      <img src="{{ url_for('video_feed') }}" border="3" width="300px">
+      <br>
+      <br>
+      <button id="movimiento_derecha"><---</button><button id="movimiento_centro">Centrar Camara</button><button id="movimiento_izquierda">---></button>
+      
+      <br>
+      <br>
+      <hr>
+      </center>
+      <form action="/def_cerrar" method="post">
+    	   <input type="submit" value="Cerrar Streaming" />
+      </form>  
+
+      <script>
+        $('#movimiento_derecha').click(function(e) {
+            e.preventDefault();    
+            $.ajax({type: "get",url: '/movimiento_camara_derecha'});});
+      </script>
+
+      <script>
+        $('#movimiento_izquierda').click(function(e) {
+            e.preventDefault();    
+            $.ajax({type: "get",url: '/movimiento_camara_izquierda'});});
+      </script>
+
+      <script>
+        $('#movimiento_centro').click(function(e) {
+            e.preventDefault();    
+            $.ajax({type: "get",url: '/movimiento_camara_centro'});});
+      </script>
+
+  </body>
+
+</html>
+
